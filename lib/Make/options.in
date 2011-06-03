@@ -1,0 +1,10 @@
+EXE_INC = \
+    -D__FOAM_VERSION__=@FOAM_VERSION@ \
+    -I$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude \
+    -I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
+    @VTK_CPPFLAGS@ @VTK_CXXFLAGS@
+
+
+LIB_LIBS = \
+    -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lOpenFOAM -lfiniteVolume \
+    @VTK_LDFLAGS@ -lvtkCommon -lvtkFiltering

@@ -1,0 +1,3 @@
+vtkFoamInterfaces.C
+
+LIB = @abs_top_builddir@/lib/libfoam2vtk

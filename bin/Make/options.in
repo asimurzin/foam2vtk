@@ -1,0 +1,10 @@
+EXE_INC = \
+    -D__FOAM_VERSION__=@FOAM_VERSION@ \
+    -I$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude \
+    -I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
+    @VTK_CPPFLAGS@ @VTK_CXXFLAGS@ \
+    -I@abs_top_builddir@/lib
+
+
+EXE_LIBS = \
+    -L@abs_top_builddir@/lib -lfoam2vtk

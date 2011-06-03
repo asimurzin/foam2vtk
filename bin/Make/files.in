@@ -1,0 +1,3 @@
+testVtkFoamInterface.C
+
+SEXE = @abs_top_builddir@/bin/foam2vtk
