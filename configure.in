@@ -39,12 +39,15 @@ echo "--------------------------------------------------------------------------
 CONFFOAM_CHECK_VTK
 echo 
 
+echo "--------------------------------------------------------------------------------------"
+CONFFLU_CHECK_PYTHONFLU
+echo 
 
 echo "---------------------------- mandatory products --------------------------------"
-CONFFOAM_PRINT_SUMMURY( "openfoam_ok vtk_ok" )
+CONFFOAM_PRINT_SUMMURY( "openfoam_ok vtk_ok pythonflu_ok" )
 echo
 echo "--------------------------------------------------------------------------------"
-CONFFOAM_CHECK_MANDATORY( "openfoam_ok vtk_ok" )
+CONFFOAM_CHECK_MANDATORY( "openfoam_ok vtk_ok pythonflu_ok" )
 
 
 #--------------------------------------------------------------------------------------
@@ -54,6 +57,7 @@ AC_OUTPUT( [ lib/Make/options \
 	     bin/Make/files \
              bashrc \
 	     Allwmake \
+	     foam2vtk/Makefile \
 	     wcleanAll ],
 	     [ chmod +x Allwmake wcleanAll ] )
 
