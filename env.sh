@@ -20,15 +20,17 @@
 
 
 #--------------------------------------------------------------------------------------
-source /opt/conffoam/r0.1/bashrc
+source /home/andrey/hybridflu/confflu/bashrc
 
 
 #--------------------------------------------------------------------------------------
 which_open_foam="1.6"
 
-source_openfoam /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
+source_openfoam /home/andrey/OpenFOAM/OpenFOAM-1.6/etc/bashrc
 
-source_salome /opt/SALOME/r5.1.3/r1.0/from_sources/bashrc
+source_salome /home/andrey/salome_5.1.4/env_products.sh
+
+source /home/andrey/hybridflu/pyflu/bashrc
 
 
 #--------------------------------------------------------------------------------------
