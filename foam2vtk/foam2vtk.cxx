@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/applications/utilities/postProcessing/graphics/foam2vtk.hh"
+  #include "foam2vtk.hh"
 %}
 
 
