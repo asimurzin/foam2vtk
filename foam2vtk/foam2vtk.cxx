@@ -30,9 +30,9 @@
 %}
 
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import <src/OpenFOAM/db/typeInfo/className.hxx>
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import <src/finiteVolume/fvMesh/fvMeshes.cxx>
 
 %include "vtkFoamInterface.H"
 
