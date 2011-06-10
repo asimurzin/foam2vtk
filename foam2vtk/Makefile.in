@@ -21,7 +21,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @PYTHONFLU_ROOT_DIR@/foam.version.makefile
+pythonflu_root_dir:=@PYTHONFLU_ROOT_DIR@
+
+include $(pythonflu_root_dir)/Foam/foam.version.makefile
 
 FOAM2VTK_CPPFLAGS=-I@abs_top_builddir@/lib
 
@@ -40,7 +42,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 sources = \
 	@abs_top_builddir@/foam2vtk/foam2vtk.cxx
 	
-include @PYTHONFLU_ROOT_DIR@/include.foam.makefile
+include $(pythonflu_root_dir)/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------
