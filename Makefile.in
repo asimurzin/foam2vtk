@@ -1,0 +1,81 @@
+## Copyright (C) 2010- Alexey Petrov
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See http://sourceforge.net/projects/pythonflu
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+BINDIR:=@bindir@
+LIBDIR:=@libdir@
+PYTHONLIB:=@PYTHON_LIB@
+
+All:
+	@./Allwmake
+	@(cd @abs_top_builddir@/foam2vtk && make )
+
+clean:
+	@./wcleanAll
+	@(cd @abs_top_builddir@/foam2vtk && make clean)
+
+
+
+#--------------------------------------------------------------------------------------
+DESTDIR=
+
+ifeq "$(shell if [ @NATIVE_PYTHON_INSTALL_PATH@ = yes ]; then echo 'true'; else echo 'false'; fi )" "true" 
+    
+    ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
+         PYTHONLIB:=$(PYTHONLIB)/dist-packages
+    endif
+    
+    ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
+         PYTHONLIB:=$(PYTHONLIB)/site-packages
+    endif
+    
+    ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+         $(error Your OS is not supported)
+    endif
+    
+endif
+
+
+install:
+	@ rm -rf $(PYTHONLIB)/foam2vtk $(BINDIR)/foam2vtk $(LIBDIR)/libfoam2vtk.so
+	@ echo "install @abs_top_builddir@/bin/foam2vtk --> $(BINDIR)/foam2vtk"
+	@ install -d $(BINDIR) $(LIBDIR) $(PYTHONLIB)
+	@ cp -rf @abs_top_builddir@/bin/foam2vtk $(BINDIR)/
+	@ echo "install @abs_top_builddir@/lib/libfoam2vtk.so --> $(LIBDIR)/"
+	@ cp -rf @abs_top_builddir@/lib/libfoam2vtk.so $(LIBDIR)/
+	@ echo "install @abs_top_builddir@/foam2vtk --> $(PYTHONLIB)/"
+	@ cp -rf @abs_top_builddir@/foam2vtk $(PYTHONLIB)/
+	@ (cd $(PYTHONLIB)/foam2vtk && find \( -name "*.d" -o -name "pyfoam" -o -name "*.exe" -o -name "*.cc" \) -delete)
+	@ (cd $(PYTHONLIB)/foam2vtk && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+
+develop:
+	@ rm -rf $(PYTHONLIB)/foam2vtk $(BINDIR)/foam2vtk $(LIBDIR)/libfoam2vtk.so
+	@ install -d $(BINDIR) $(LIBDIR) $(PYTHONLIB)
+	@ echo "ln -s @abs_top_builddir@/bin/foam2vtk --> $(BINDIR)/foam2vtk"
+	@ ln -s @abs_top_builddir@/bin/foam2vtk $(BINDIR)/foam2vtk
+	@ echo "ln -s @abs_top_builddir@/lib/libfoam2vtk.so --> $(LIBDIR)/libfoam2vtk.so"
+	@ ln -s @abs_top_builddir@/lib/libfoam2vtk.so $(LIBDIR)/libfoam2vtk.so
+	@ echo "ln -s @abs_top_builddir@/foam2vtk --> $(PYTHONLIB)/foam2vtk"
+	@ ln -s @abs_top_builddir@/foam2vtk $(PYTHONLIB)/foam2vtk
+
+
+#--------------------------------------------------------------------------------------
