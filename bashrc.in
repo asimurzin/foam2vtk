@@ -24,9 +24,9 @@ if test "${FOAM2VTK_ROOT_DIR}x" = "x" ; then
    export FOAM2VTK_ROOT_DIR="@abs_top_builddir@"
    echo FOAM2VTK_ROOT_DIR=\"${FOAM2VTK_ROOT_DIR}\"
 
-#   export PATH=${FOAM2VTK_ROOT_DIR}/bin:${PATH}
-#   export PYTHONPATH=${FOAM2VTK_ROOT_DIR}:${PYTHONPATH}
-#   export LD_LIBRARY_PATH=${FOAM2VTK_ROOT_DIR}/lib:${LD_LIBRARY_PATH}
+   export PATH=${FOAM2VTK_ROOT_DIR}/bin:${PATH}
+   export PYTHONPATH=${FOAM2VTK_ROOT_DIR}:${PYTHONPATH}
+   export LD_LIBRARY_PATH=${FOAM2VTK_ROOT_DIR}/lib:${LD_LIBRARY_PATH}
 
    source ${FOAM2VTK_ROOT_DIR}/env.sh
 fi
