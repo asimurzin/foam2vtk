@@ -21,9 +21,11 @@
 
 
 #--------------------------------------------------------------------------------------
-BINDIR:=@bindir@
-LIBDIR:=@libdir@
-PYTHONLIB:=@PYTHON_LIB@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+libdir=@libdir@
+pythondir=@PYTHONDIR@
 
 All:
 	@./Allwmake
@@ -36,46 +38,29 @@ clean:
 
 
 #--------------------------------------------------------------------------------------
-DESTDIR=
-
-ifeq "$(shell if [ @NATIVE_PYTHON_INSTALL_PATH@ = yes ]; then echo 'true'; else echo 'false'; fi )" "true" 
-    
-    ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
-         PYTHONLIB:=$(PYTHONLIB)/dist-packages
-    endif
-    
-    ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
-         PYTHONLIB:=$(PYTHONLIB)/site-packages
-    endif
-    
-    ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-         $(error Your OS is not supported)
-    endif
-    
-endif
-
-
 install:
-	@ rm -rf $(PYTHONLIB)/foam2vtk $(BINDIR)/foam2vtk $(LIBDIR)/libfoam2vtk.so
-	@ echo "install @abs_top_builddir@/bin/foam2vtk --> $(BINDIR)/foam2vtk"
-	@ install -d $(BINDIR) $(LIBDIR) $(PYTHONLIB)
-	@ cp -rf @abs_top_builddir@/bin/foam2vtk $(BINDIR)/
-	@ echo "install @abs_top_builddir@/lib/libfoam2vtk.so --> $(LIBDIR)/"
-	@ cp -rf @abs_top_builddir@/lib/libfoam2vtk.so $(LIBDIR)/
-	@ echo "install @abs_top_builddir@/foam2vtk --> $(PYTHONLIB)/"
-	@ cp -rf @abs_top_builddir@/foam2vtk $(PYTHONLIB)/
-	@ (cd $(PYTHONLIB)/foam2vtk && find \( -name "*.d" -o -name "pyfoam" -o -name "*.exe" -o -name "*.cc" \) -delete)
-	@ (cd $(PYTHONLIB)/foam2vtk && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so
+	@ echo "install @abs_top_builddir@/bin/foam2vtk --> $(bindir)/foam2vtk"
+	@ install -d $(bindir) $(libdir) $(pythondir)
+	@ cp -rf @abs_top_builddir@/bin/foam2vtk $(bindir)/
+	@ echo "install @abs_top_builddir@/lib/libfoam2vtk.so --> $(libdir)/"
+	@ cp -rf @abs_top_builddir@/lib/libfoam2vtk.so $(libdir)/
+	@ echo "install @abs_top_builddir@/foam2vtk --> $(pythondir)/"
+	@ cp -rf @abs_top_builddir@/foam2vtk $(pythondir)/
+	@ (cd $(pythondir)/foam2vtk && find \( -name "*.d" -o -name "pyfoam" -o -name "*.exe" -o -name "*.cc" \) -delete)
+	@ (cd $(pythondir)/foam2vtk && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ ldconfig
 
 develop:
-	@ rm -rf $(PYTHONLIB)/foam2vtk $(BINDIR)/foam2vtk $(LIBDIR)/libfoam2vtk.so
-	@ install -d $(BINDIR) $(LIBDIR) $(PYTHONLIB)
-	@ echo "ln -s @abs_top_builddir@/bin/foam2vtk --> $(BINDIR)/foam2vtk"
-	@ ln -s @abs_top_builddir@/bin/foam2vtk $(BINDIR)/foam2vtk
-	@ echo "ln -s @abs_top_builddir@/lib/libfoam2vtk.so --> $(LIBDIR)/libfoam2vtk.so"
-	@ ln -s @abs_top_builddir@/lib/libfoam2vtk.so $(LIBDIR)/libfoam2vtk.so
-	@ echo "ln -s @abs_top_builddir@/foam2vtk --> $(PYTHONLIB)/foam2vtk"
-	@ ln -s @abs_top_builddir@/foam2vtk $(PYTHONLIB)/foam2vtk
+	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so
+	@ install -d $(bindir) $(libdir) $(pythondir)
+	@ echo "ln -s @abs_top_builddir@/bin/foam2vtk --> $(bindir)/foam2vtk"
+	@ ln -s @abs_top_builddir@/bin/foam2vtk $(bindir)/foam2vtk
+	@ echo "ln -s @abs_top_builddir@/lib/libfoam2vtk.so --> $(libdir)/libfoam2vtk.so"
+	@ ln -s @abs_top_builddir@/lib/libfoam2vtk.so $(libdir)/libfoam2vtk.so
+	@ echo "ln -s @abs_top_builddir@/foam2vtk --> $(pythondir)/foam2vtk"
+	@ ln -s @abs_top_builddir@/foam2vtk $(pythondir)/foam2vtk
+	@ ldconfig
 
 
 #--------------------------------------------------------------------------------------
