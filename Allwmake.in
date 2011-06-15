@@ -27,7 +27,5 @@ set -x
 wmake libso @abs_top_builddir@/lib
 wmake exe @abs_top_builddir@/bin
 
-(cd @abs_top_builddir@/foam2vtk && make )
-
 
 #--------------------------------------------------------------------------------------

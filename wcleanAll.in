@@ -27,7 +27,5 @@ set -x
 wclean libso @abs_top_builddir@/lib
 wclean exe @abs_top_builddir@/bin
 
-(cd @abs_top_builddir@/foam2vtk && make clean )
-
 
 #--------------------------------------------------------------------------------------
