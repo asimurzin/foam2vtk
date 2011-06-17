@@ -25,6 +25,10 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 bindir=@bindir@
 libdir=@libdir@
+includedir=@includedir@
+
+m4dir=@datarootdir@
+
 pythondir=@PYTHONDIR@
 
 All:
@@ -39,27 +43,35 @@ clean:
 
 #--------------------------------------------------------------------------------------
 install:
-	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so
+	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so $(includedir)/foam2vtk $(m4dir)/foam2vtk/admin
 	@ echo "install @abs_top_builddir@/bin/foam2vtk --> $(bindir)/foam2vtk"
-	@ install -d $(bindir) $(libdir) $(pythondir)
+	@ install -d $(bindir) $(libdir) $(pythondir) $(includedir)/foam2vtk $(m4dir)/foam2vtk/admin
 	@ cp -rf @abs_top_builddir@/bin/foam2vtk $(bindir)/
 	@ echo "install @abs_top_builddir@/lib/libfoam2vtk.so --> $(libdir)/"
 	@ cp -rf @abs_top_builddir@/lib/libfoam2vtk.so $(libdir)/
+	@ echo "install @abs_top_builddir@/lib/*.H --> $(includedir)/foam2vtk/"
+	@ cp -rf @abs_top_builddir@/lib/*.H $(includedir)/foam2vtk/
 	@ echo "install @abs_top_builddir@/foam2vtk --> $(pythondir)/"
 	@ cp -rf @abs_top_builddir@/foam2vtk $(pythondir)/
 	@ (cd $(pythondir)/foam2vtk && find \( -name "*.d" -o -name "pyfoam" -o -name "*.exe" -o -name "*.cc" \) -delete)
 	@ (cd $(pythondir)/foam2vtk && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ echo "cp -rf @abs_top_builddir@/admin/foam2vtk_check_foam2vtk.m4 --> $(m4dir)/foam2vtk/admin/"
+	@ cp -rf @abs_top_builddir@/admin/foam2vtk_check_foam2vtk.m4 $(m4dir)/foam2vtk/admin/
 	@ ldconfig
 
 develop:
-	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so
-	@ install -d $(bindir) $(libdir) $(pythondir)
+	@ rm -rf $(pythondir)/foam2vtk $(bindir)/foam2vtk $(libdir)/libfoam2vtk.so $(includedir)/foam2vtk $(m4dir)/foam2vtk/admin
+	@ install -d $(bindir) $(libdir) $(pythondir) $(includedir) $(m4dir)/foam2vtk/admin
 	@ echo "ln -s @abs_top_builddir@/bin/foam2vtk --> $(bindir)/foam2vtk"
 	@ ln -s @abs_top_builddir@/bin/foam2vtk $(bindir)/foam2vtk
 	@ echo "ln -s @abs_top_builddir@/lib/libfoam2vtk.so --> $(libdir)/libfoam2vtk.so"
 	@ ln -s @abs_top_builddir@/lib/libfoam2vtk.so $(libdir)/libfoam2vtk.so
+	@ echo "ln -s @abs_top_builddir@/lib --> $(includedir)/foam2vtk"
+	@ ln -s @abs_top_builddir@/lib $(includedir)/foam2vtk
 	@ echo "ln -s @abs_top_builddir@/foam2vtk --> $(pythondir)/foam2vtk"
 	@ ln -s @abs_top_builddir@/foam2vtk $(pythondir)/foam2vtk
+	@ echo "ln -s @abs_top_builddir@/admin/foam2vtk_check_foam2vtk.m4 --> $(m4dir)/foam2vtk/admin/"
+	@ ln -s @abs_top_builddir@/admin/foam2vtk_check_foam2vtk.m4 $(m4dir)/foam2vtk/admin/foam2vtk_check_foam2vtk.m4
 	@ ldconfig
 
 
