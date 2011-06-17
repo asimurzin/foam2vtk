@@ -1,4 +1,3 @@
-dnl confFlu - pythonFlu configuration package
 dnl Copyright (C) 2010- Alexey Petrov
 dnl Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 dnl 
