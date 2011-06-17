@@ -31,7 +31,5 @@ source_openfoam /opt/openfoam171/etc/bashrc
 
 source_salome /home/andrey/salome_5.1.4/env_products.sh
 
-source /home/andrey/hybridflu/pyflu/bashrc
-
 
 #--------------------------------------------------------------------------------------
