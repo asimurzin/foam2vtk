@@ -33,31 +33,31 @@ AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_OPENFOAM
+CONFFLU_CHECK_OPENFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_VTK
+CONFFLU_CHECK_VTK
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_PYTHON
+CONFFLU_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFLU_CHECK_PYTHONFLU
+PYTHONFLU_CHECK_PYTHONFLU
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_OS
+CONFFLU_CHECK_OS
 echo 
 
 
 echo "---------------------------- mandatory products --------------------------------"
-CONFFOAM_PRINT_SUMMURY( "openfoam_ok vtk_ok pythonflu_ok" )
+CONFFLU_PRINT_SUMMURY( "openfoam_ok vtk_ok pythonflu_ok" )
 echo
 echo "--------------------------------------------------------------------------------"
-CONFFOAM_CHECK_MANDATORY( "openfoam_ok vtk_ok pythonflu_ok" )
+CONFFLU_CHECK_MANDATORY( "openfoam_ok vtk_ok pythonflu_ok" )
 
 
 #--------------------------------------------------------------------------------------
