@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include "vtkFoamInterfaces.H"
 
