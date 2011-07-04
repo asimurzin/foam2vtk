@@ -25,11 +25,9 @@ See http://sourceforge.net/projects/pythonflu
 Pre-requisites
 #--------------------------------------------------------------------------------------
 
-foam2vtk utility requires OpenFOAM and VTK libraries as its pre-requisites.
-To configure its build system, "foam2vtk" utitlity need confFlu 
-(common configuration package).
+foam2vtk utility requires OpenFOAM, VTK libraries, confFlu and pythonFlu as its pre-requisites.
 
-* Make sure that confFlu  is installed
+* Make sure that confFlu is installed
   Please follow instructions from corresponding INSTALL file to setup confFlu
   in your environment.
 
