@@ -32,3 +32,12 @@
     * Adjusting to the "common configuration system" (confFoam package)
 
     * Providing of initial version of project documentation
+
+2011-07-04 Alexey PETROV  <alexey.petrov.nnov@gmail.com>
+
+    * To include wrapping of C++ functionality
+
+    * To provide installation procedure
+
+    * Adjusting to the "changed configuration system" (confFlu package)
+    

@@ -72,6 +72,10 @@ In order to build the module you have to perform the following actions:
    ./Allwmake
 
    (use "./wcleanAll" command to cleanup the build folder)
+   
+6. Install "foam2vtk"
+
+   make install
 
 
 #--------------------------------------------------------------------------------------
