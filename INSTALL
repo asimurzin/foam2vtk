@@ -27,7 +27,7 @@ Pre-requisites
 
 foam2vtk utility requires OpenFOAM, VTK libraries, confFlu and pythonFlu as its pre-requisites.
 
-* Make sure that confFlu is installed
+* Make sure that confFlu is installed (tested with release 1.2-hybrid)
   Please follow instructions from corresponding INSTALL file to setup confFlu
   in your environment.
 
