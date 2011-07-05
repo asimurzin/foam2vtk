@@ -81,7 +81,7 @@ In order to build the module you have to perform the following actions:
    
 6. Install "foam2vtk"
 
-   make install
+   sudo make install
 
 
 #--------------------------------------------------------------------------------------
